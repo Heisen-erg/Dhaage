@@ -12,6 +12,7 @@ providers: [
   })
 ]
 ,
+secret:"l5ZYbjUsXctsThK6TLh/Mp/nnVBoqoqxG1XP2vqzHvc=" ,
 session:{
 maxAge:3600
 
