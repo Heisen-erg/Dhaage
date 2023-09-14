@@ -1,14 +1,14 @@
 import React from "react";
 import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@nextui-org/react";
 
-export default function App() {
+export default function App({photo,thread}) {
   const [isFollowed, setIsFollowed] = React.useState(false);
 
   return (
     <Card className=" z-0 bg-black pt-12 pb-12 pl-5 w-full lg:w-5/6   "  fu>
       <CardHeader className="justify-between">
         <div className="flex gap-5">
-          <Avatar isBordered radius="full" size="md" src="" />
+          <Avatar isBordered radius="full" size="md" src={photo} />
           <div className="flex flex-col gap-1 items-start justify-center">
         
             <h5 className="text-small ml-2 tracking-tight text-default-400">@dhaage</h5>
@@ -27,10 +27,10 @@ export default function App() {
       </CardHeader>
       <CardBody className="px-3 py-4 h-auto overflow-y-hidden text-small text-default-400">
         <p>
-        I am HEISENBERG , Full Stack Web developer
+       {thread}
         </p>
         <span className="pt-2">
-          #fullstackwebdeveloper 
+          Coming Soon... 
           <span className="py-2" aria-label="computer" role="img">
             💻
           </span>

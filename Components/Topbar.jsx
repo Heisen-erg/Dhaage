@@ -12,6 +12,7 @@ import { signIn,signOut,useSession } from 'next-auth/react';
 
 const Topbar = () => {
   const { data: session } = useSession()
+  
   return (
    
 <div className= ' flex sticky top-0 z-50 flex-row w-full items-center justify-between  bg-custom-color backdrop-blur-xl' style={
