@@ -5,7 +5,7 @@ import { useState } from 'react';
 import {  useSession } from 'next-auth/react'
 import {  Modal, Button,Textarea,  ModalContent,useDisclosure,   ModalHeader,   ModalBody,   ModalFooter} from "@nextui-org/react";
 import axios from "axios"
-import {  useRouter  } from 'next/navigation'
+
 
 const page = () => {
 const[thread,setthread]=useState("")
@@ -19,12 +19,7 @@ const router = useRouter()
 
 axios.post("/thread/user",{thread,image:session.user.image}).then((data)=>{alert(data.data.message)
 
-return(
 
-router.push('/')
-
-
-)
 
 })
 
