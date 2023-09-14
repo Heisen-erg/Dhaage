@@ -9,7 +9,7 @@ import seaarch from "@/public/assets/search.svg"
 const Bottombar = () => {
   return (
    <section className='  z-5 w-full sticky bottom-0  bg-black  ' style={{height:'10vh'}}>
-<div className='flex flex-row lg:hidden  pt-5 justify-evenly max-lg: items-center w-full' >
+<div className='flex flex-row  lg:hidden  pt-5 justify-evenly  items-center w-full' >
     
 {mapping.map((response)=>{
 

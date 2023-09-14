@@ -1,15 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
-import home from "@/public/assets/home.svg"
+
 import Image from 'next/image';
 import mapping from "@/Data/leftbar"
 
-import homelogo from "@/public/assets/home.svg"
-import seaarch from "@/public/assets/search.svg"
+
 
 const Leftbar = () => {
   return (
-   <section className='w-1/6 sticky left-0  max-lg:hidden bg-black' style={{height:'80vh',top:'10vh'}} >
+   <section className=' sticky left-0  lg:visible lg:w-1/6 hidden bg-black' style={{height:'80vh',top:'10vh'}} >
 <div className='flex flex-col justify-evenly  gap-14  pt-16 items-center w-full' >
     
 {mapping.map((response)=>{
