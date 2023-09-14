@@ -9,7 +9,7 @@ import axios from "axios"
 
 const page = () => {
 const[thread,setthread]=useState("")
-const router = useRouter()
+
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const { data: session } = useSession()
     
