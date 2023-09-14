@@ -11,7 +11,7 @@ export default function App() {
           <Avatar isBordered radius="full" size="md" src="/avatars/avatar-1.png" />
           <div className="flex flex-col gap-1 items-start justify-center">
         
-            <h5 className="text-small tracking-tight text-default-400">@zoeylang</h5>
+            <h5 className="text-small ml-2 tracking-tight text-default-400">@zoeylang</h5>
           </div>
         </div>
         <Button

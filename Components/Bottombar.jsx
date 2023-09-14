@@ -9,7 +9,7 @@ import seaarch from "@/public/assets/search.svg"
 const Bottombar = () => {
   return (
    <section className='  z-5 w-full sticky bottom-0  bg-black  ' style={{height:'10vh'}}>
-<div className='flex flex-row  lg:hidden  pt-5 justify-evenly  items-center w-full' >
+<div className='flex flex-row  pt-5 justify-evenly  items-center w-full  lg:hidden  visible    ' >
     
 {mapping.map((response)=>{
 
@@ -18,7 +18,7 @@ const Bottombar = () => {
 return(
 
 
-  <Link className=' active flex flex-row   gap-5  ' key={response.name} href='/'>
+  <Link className=' flex flex-row   gap-5  ' key={response.name} href='/'>
   <Image src={response.logo} width={24} height={24}   />
  
    
