@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {  experimental: {
+    serverActions: true
+  },
+  images: {
+    domains: ["lh3.googleusercontent.com"],
+    formats: ['image/webp'],
+}
+}
 
 module.exports = nextConfig
-
 
 

@@ -8,10 +8,10 @@ export default function App() {
     <Card className=" z-0 bg-black pt-12 pb-12 pl-5 w-full lg:w-5/6   "  fu>
       <CardHeader className="justify-between">
         <div className="flex gap-5">
-          <Avatar isBordered radius="full" size="md" src="/avatars/avatar-1.png" />
+          <Avatar isBordered radius="full" size="md" src="" />
           <div className="flex flex-col gap-1 items-start justify-center">
         
-            <h5 className="text-small ml-2 tracking-tight text-default-400">@zoeylang</h5>
+            <h5 className="text-small ml-2 tracking-tight text-default-400">@dhaage</h5>
           </div>
         </div>
         <Button
@@ -27,10 +27,10 @@ export default function App() {
       </CardHeader>
       <CardBody className="px-3 py-4 h-auto overflow-y-hidden text-small text-default-400">
         <p>
-          Frontend developer and UI/UX enthusiast. Join me on this coding adventure!
+        I am HEISENBERG , Full Stack Web developer
         </p>
         <span className="pt-2">
-          #FrontendWithZoey 
+          #fullstackwebdeveloper 
           <span className="py-2" aria-label="computer" role="img">
             💻
           </span>

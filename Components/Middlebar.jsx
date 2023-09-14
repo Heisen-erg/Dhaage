@@ -6,7 +6,7 @@ const Middlebar = () => {
   return (
    <div style={{height:'fit-content'}}  className='flex items-center flex-col gap-6 z-0 text-gray-400 w-full  lg:w-5/6 '>
 
-<Card1/>
+<Card1  />
 <Card1/>
 <Card1/>
 <Card1/>

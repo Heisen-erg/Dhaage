@@ -35,7 +35,12 @@ const Topbar = () => {
           
           < DropdownItem
          color='default'
-       onClick={()=>signOut()}
+       onClick={()=>{
+
+        
+        
+        
+        signOut()}}
           >
           
            Signout
@@ -43,7 +48,12 @@ const Topbar = () => {
           :
           <DropdownItem
           color='default'
-          onClick={()=>signIn("google")}
+          onClick={()=>{
+            
+            
+            signIn("google")
+      
+        }}
              >
              
                Sigin
