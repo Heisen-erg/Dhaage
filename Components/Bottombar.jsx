@@ -4,12 +4,12 @@ import home from "@/public/assets/home.svg"
 import Image from 'next/image';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import mapping from "@/Data/leftbar"
-import seaarch from "@/public/assets/search.svg"
+
 
 const Bottombar = () => {
   return (
    <section className='  z-5 w-full sticky bottom-0  bg-black  ' style={{height:'10vh'}}>
-<div className='flex flex-row  pt-5 justify-evenly  items-center w-full  lg:hidden  visible    ' >
+<div className='flex flex-row  pt-5 justify-evenly  items-center w-full  lg:hidden sm:visible    ' >
     
 {mapping.map((response)=>{
 
@@ -17,8 +17,8 @@ const Bottombar = () => {
 
 return(
 
-
-  <Link className=' flex flex-row   gap-5  ' key={response.name} href='/'>
+  // className=' flex flex-row   gap-5  '
+  <Link  key={response.name} href={response.path}>
   <Image src={response.logo} width={24} height={24}   />
  
    
