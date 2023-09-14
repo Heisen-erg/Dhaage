@@ -35,7 +35,7 @@ useEffect(() => {
         <div style={{height:'fit-content'}}  className='flex items-center flex-col gap-6 z-0 text-gray-400 w-full  lg:w-5/6 '>
 {data.map((response)=>{
 
-  return  <Card1 photo={response.image} thread={response.thread} />
+  return  <Card1 photo={response.image} thread={response.thread} key={response.thread} />
 })}
 
 
