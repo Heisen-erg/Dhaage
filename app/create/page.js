@@ -1,13 +1,14 @@
 "use client"
 
 import React from 'react'
+import { useState } from 'react';
 import {  useSession } from 'next-auth/react'
 import {  Modal, Button,Textarea,  ModalContent,useDisclosure,   ModalHeader,   ModalBody,   ModalFooter} from "@nextui-org/react";
 import axios from "axios"
 import {  useRouter  } from 'next/navigation'
 
 const page = () => {
-const[thread,setthread]=React.useState("")
+const[thread,setthread]=useState("")
 const router = useRouter()
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const { data: session } = useSession()
