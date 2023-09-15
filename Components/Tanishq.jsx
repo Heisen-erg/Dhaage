@@ -4,41 +4,25 @@ import Image from "next/image";
  import Comment from "@/public/assets/comment.svg"
 import COMMENT from "@/Components/Comment"
  import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,  useDisclosure} from "@nextui-org/react";
- import axios from "axios"
+ import tanishq from "@/public/assets/tanishq.jpg"
 
-export default function App({photo,thread,id,username}) {
+export default function App() {
   const [isFollowed, setIsFollowed] = React.useState(false);
-  const[comment1,setcomment1]=React.useState([])
+
   
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-const[comment,setcomment] = React.useState("")
-
-
-  const commentsend = async (e) =>{
-
-axios.put("/thread/user",{message:comment,threadid:e.target.name})
 
 
 
-  }
-
-  const getting = async (e)=>{
-console.log("clicked")
-axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment1(response.data)} ).catch((err)=>{console.log(err.message)})
-
-
-
-
-  }
 
   return (<>
     <Card className=" z-0 bg-black pt-12 pb-12 pl-5 w-full lg:w-5/6   "  fullWidth >
       <CardHeader className="justify-between">
         <div className="flex gap-5">
-          <Avatar isBordered radius="full" size="md" src={photo} />
+          <Avatar isBordered radius="full" size="md" src="https://th.bing.com/th/id/OIP.G9aWziCHbvLV-UHFyFRQpgHaEK?w=275&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" />
           <div className="flex flex-col gap-1 items-start justify-center">
         
-            <h5 className="text-small ml-2 tracking-tight text-default-400">{username}</h5>
+            <h5 className="text-small ml-2 tracking-tight text-default-400">Tanishq Rajput</h5>
           </div>
         </div>
         <Button
@@ -53,8 +37,15 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
         </Button>
       </CardHeader>
       <CardBody className="px-3 py-4 h-auto overflow-y-hidden text-small text-default-400">
+      <Image
+        alt="Tanishq woman"
+       
+        height={200}
+        src={tanishq}
+        width={200}
+      />
         <p>
-       {thread}
+       I am Tanishq Available 24 X 7 for night service
         </p>
         <span className="pt-2">
           Coming Soon... 
@@ -73,26 +64,7 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
           <p className="text-default-400 text-small">Followers</p>
         </div>
         <div className="flex  ">
-         <Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="text-white"  >  COMMENTS </Button>
-         <Modal   isOpen={isOpen} scrollBehavior={"inside"} placement="center" className="  bg-zinc-700" onOpenChange={onOpenChange}>
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader  className="flex flex-col gap-1">Comments</ModalHeader>
-              <ModalBody  className=" scrollbar-hide justify-start flex flex-col ">
-               {comment1.map((response)=>{return <COMMENT  comment={response.comment} /> })}
-              
-              </ModalBody>
-              <ModalFooter>
-               <Input  onChange={(e)=>{setcomment(e.target.value)}}  />
-                <Button name={id}  color="primary" onClick={commentsend} onPress={onClose}>
-                 Comment
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+        
           {/* <Button   size="sm" color="slate-100" ><Image src={heart} height={26} width={26} className=" text-black" />  </Button> */}
         </div>
       </CardFooter>

@@ -15,7 +15,7 @@ const[thread,setthread]=useState("")
 
     const send = async ()=>{
 
-axios.post("/thread/user",{thread,image:session.user.image}).then((data)=>{alert(data.data.message)
+axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name}).then((data)=>{alert(data.data.message)
 
 
 

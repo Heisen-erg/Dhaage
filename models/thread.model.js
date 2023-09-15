@@ -7,17 +7,7 @@ const thread = new Schema({
 
     thread: String,
     image: String,
-    commenting:
-
-    {
-
-       type:Schema.Types.ObjectId,
-       ref:'comments'
-        
-        
-    
-
-    }
+    using:String,
 
 
 
