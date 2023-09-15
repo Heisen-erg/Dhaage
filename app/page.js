@@ -13,7 +13,8 @@ import Card1 from "@/Components/Card1"
 export default function Home() {
 const[data,setdata]=React.useState([])
 useEffect(() => {
-  axios.get("/thread/user").then((response)=>{setdata(response.data)})
+  axios.get("/thread/user").then((response)=>{setdata((response.data).reverse()) 
+    })
   
   
   
@@ -35,7 +36,7 @@ useEffect(() => {
         <div style={{height:'fit-content'}}  className='flex items-center flex-col gap-6 z-0 text-gray-400 w-full  lg:w-5/6 '>
 {data.map((response)=>{
 
-  return  <Card1 photo={response.image} thread={response.thread} key={response.thread} />
+  return  <Card1 photo={response.image} thread={response.thread} key={response._id} id={response._id} />
 })}
 
 
