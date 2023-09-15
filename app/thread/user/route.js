@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 import { NextResponse ,NextRequest} from "next/server"
-import THREADS from "@/models/thread.model"
+import {THREADS} from "@/models/thread.model"
+import {comments} from "@/models/thread.model"
 
 
 export async function POST(request){
@@ -26,5 +27,21 @@ await request
 return  NextResponse.json(result)
 
 
+
+}
+
+
+export async function PUT(request){
+    await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
+    const result = await request.json()
+    console.log(result)
+   
+   await comments.create({threadid:result.threadid,comment:result.message})
+   
+
+
+
+
+return NextResponse.json({"message":"success"})
 
 }

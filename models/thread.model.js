@@ -5,10 +5,26 @@ import { Schema } from "mongoose";
 const thread = new Schema({
 
 
-thread:String,
-    image:String
-   
+    thread: String,
+    image: String,
+    commenting:
+
+    {
+
+       type:Schema.Types.ObjectId,
+       ref:'comments'
+        
+        
     
+
+    }
+
+
+
+
+
+
+
 
 
 
@@ -21,4 +37,23 @@ thread:String,
 })
 
 const THREADS = mongoose.models.dhaage || mongoose.model('dhaage', thread)
-export default THREADS
+export { THREADS }
+
+
+
+const Message = new Schema({
+
+
+   threadid:String,
+    comment:String
+        
+       
+    
+    
+    
+    
+    })
+    
+    
+    const comments = mongoose.models.comments || mongoose.model('comments', Message)
+    export { comments }
