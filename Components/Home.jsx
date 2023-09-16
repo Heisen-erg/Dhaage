@@ -16,7 +16,7 @@ const[image,setimage]=useState("")
     const send = async ()=>{
 
 
-
+if (image) {
     async function convert(image){
 
 return new Promise((resolve,reject)=>{
@@ -31,14 +31,14 @@ return new Promise((resolve,reject)=>{
 
 
     const result = await convert(image)
-   
+   return axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:result}).then((data)=>{alert(data.data.message)})
+
+  }
 
 
 
 
-
-
-axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:result}).then((data)=>{alert(data.data.message)})
+axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:""}).then((data)=>{alert(data.data.message)})
 
 
 

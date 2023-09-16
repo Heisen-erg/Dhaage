@@ -58,7 +58,7 @@ return setspinner(false)
         </Button>
       </CardHeader>
       <CardBody className="px-3 py-4 h-auto overflow-y-hidden text-small text-default-400">
-        <Image loader={<Spinner/>} className="mt-4" height={200} width={200} src={postimage} blurDataURL={postimage} />
+       {postimage && <Image  className="mt-4" height={200} width={200} src={postimage} blurDataURL={postimage} />}
         <p className="mt-4">
        {thread}
         </p>
