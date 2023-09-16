@@ -9,9 +9,9 @@ await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@clust
 console.log("connection true")
 
 const result = await request.json()
-console.log(result)
 
-THREADS.create(result)
+
+await THREADS.create(result)
 return NextResponse.json({"message":"successfully uploaded"})
 
 
