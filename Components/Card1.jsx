@@ -1,12 +1,12 @@
 import React from "react";
-import {Card, CardHeader, CardBody, CardFooter, Avatar, Button, Input} from "@nextui-org/react";
+import {Card, CardHeader, CardBody, CardFooter, Avatar, Button, Input, Spinner} from "@nextui-org/react";
 import Image from "next/image";
  import Comment from "@/public/assets/comment.svg"
 import COMMENT from "@/Components/Comment"
  import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,  useDisclosure} from "@nextui-org/react";
  import axios from "axios"
 
-export default function App({photo,thread,id,username}) {
+export default function App({photo,thread,id,username,postimage}) {
   const [isFollowed, setIsFollowed] = React.useState(false);
   const[comment1,setcomment1]=React.useState([])
   
@@ -53,7 +53,8 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
         </Button>
       </CardHeader>
       <CardBody className="px-3 py-4 h-auto overflow-y-hidden text-small text-default-400">
-        <p>
+        <Image loader={<Spinner/>} className="mt-4" height={200} width={200} src={postimage} blurDataURL={postimage} />
+        <p className="mt-4">
        {thread}
         </p>
         <span className="pt-2">

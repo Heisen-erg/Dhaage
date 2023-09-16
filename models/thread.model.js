@@ -8,6 +8,7 @@ const thread = new Schema({
     thread: String,
     image: String,
     using:String,
+    postimage:String
 
 
 

@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
 import {  useSession } from 'next-auth/react'
-import {  Modal, Button,Textarea,  ModalContent,useDisclosure,   ModalHeader,   ModalBody,   ModalFooter} from "@nextui-org/react";
+import {  Modal, Button,Textarea,  ModalContent,useDisclosure,   ModalHeader,   ModalBody,   ModalFooter, Input} from "@nextui-org/react";
 import axios from "axios"
 
 
 const page = () => {
 const[thread,setthread]=useState("")
-
+const[image,setimage]=useState("")
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const { data: session } = useSession()
     
@@ -15,11 +15,34 @@ const[thread,setthread]=useState("")
 
     const send = async ()=>{
 
-axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name}).then((data)=>{alert(data.data.message)
 
 
+    async function convert(image){
 
+return new Promise((resolve,reject)=>{
+
+ const filereader= new FileReader();
+  filereader.readAsDataURL(image);
+  filereader.onload=()=>{resolve(filereader.result)}
+  filereader.onerror=(error)=>{reject(error)}
 })
+
+    }
+
+
+    const result = await convert(image)
+   
+
+
+
+
+
+
+axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:result}).then((data)=>{alert(data.data.message)})
+
+
+
+
 
 
     }
@@ -30,6 +53,7 @@ axios.post("/thread/user",{thread,image:session.user.image,using:session.user.na
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">Create Thread</ModalHeader>
+              <Input onChange={(e)=> setimage(e.target.files[0])} type='file' accept='image/jpeg, image/png image/jpg'  />
               <ModalBody>
               <Textarea
       label="Description"
