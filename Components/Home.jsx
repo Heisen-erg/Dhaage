@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {  useSession } from 'next-auth/react'
 import {  Modal, Button,Textarea,  ModalContent,useDisclosure,   ModalHeader,   ModalBody,   ModalFooter, Input} from "@nextui-org/react";
 import axios from "axios"
+import { revalidatePath } from 'next/cache';
 
 
 const page = () => {
@@ -38,7 +39,9 @@ return new Promise((resolve,reject)=>{
 
 
 
-axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:""}).then((data)=>{alert(data.data.message)})
+axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:""}).then((data)=>{alert(data.data.message)
+
+})
 
 
 

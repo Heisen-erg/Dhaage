@@ -9,6 +9,7 @@ import Middlebar from "@/Components/Middlebar";
 import Leftbar from "@/Components/Leftbar";
 import Card1 from "@/Components/Card1"
 import dhaage from "@/public/assets/dhaage.png"
+import CustomSpinner from "@/Components/CustomSpinner";
 import Tanishq from "@/Components/Tanishq"
 import { Spinner } from "@nextui-org/react";
 export default function Home() {
@@ -37,7 +38,7 @@ useEffect(() => {
 
 <div className='flex   ' >
         <Leftbar/>
-        {spinner? <div className="flex w-full justify-center items-center"> <Spinner /> </div> :
+        {spinner? <CustomSpinner/> :
         <div style={{height:'fit-content',minHeight:'80vh'}}  className='flex  items-center flex-col gap-6 z-0 text-gray-400 w-full  lg:w-5/6 '>
           {/* <Card1 photo={dhaage} thread={"#THIS IS THREADS(CLONE)  #CURRENTLY UNDER DEVELOPMENT #BUT YOU CAN CREATE YOUR THREAD UNDER CREATE SECTION "} /> */}
          
