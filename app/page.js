@@ -38,7 +38,7 @@ useEffect(() => {
 <div className='flex   ' >
         <Leftbar/>
         {spinner? <div className="flex w-full justify-center items-center"> <Spinner /> </div> :
-        <div style={{height:'fit-content'}}  className='flex items-center flex-col gap-6 z-0 text-gray-400 w-full  lg:w-5/6 '>
+        <div style={{height:'fit-content',minHeight:'80vh'}}  className='flex  items-center flex-col gap-6 z-0 text-gray-400 w-full  lg:w-5/6 '>
           {/* <Card1 photo={dhaage} thread={"#THIS IS THREADS(CLONE)  #CURRENTLY UNDER DEVELOPMENT #BUT YOU CAN CREATE YOUR THREAD UNDER CREATE SECTION "} /> */}
          
 {data.map((response)=>{

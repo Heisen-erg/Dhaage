@@ -36,8 +36,9 @@ const Message = new Schema({
 
 
    threadid:String,
-    comment:String
-        
+    comment:String,
+       commentavatar:String,
+       commentuser:String 
        
     
     

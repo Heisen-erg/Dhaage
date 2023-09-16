@@ -1,22 +1,24 @@
 import React from "react";
-import {Card, CardHeader, CardBody, CardFooter, Avatar, Button, Input, Spinner} from "@nextui-org/react";
+import {Card,CardHeader, CardBody, CardFooter, Avatar, Button, Input, Spinner} from "@nextui-org/react";
 import Image from "next/image";
  import Comment from "@/public/assets/comment.svg"
 import COMMENT from "@/Components/Comment"
  import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,  useDisclosure} from "@nextui-org/react";
  import axios from "axios"
+ import { useSession } from "next-auth/react";
 
 export default function App({photo,thread,id,username,postimage}) {
   const [isFollowed, setIsFollowed] = React.useState(false);
   const[comment1,setcomment1]=React.useState([])
-  
+  const[spinner,setspinner]=React.useState(true)
+  const { data: session } = useSession()
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 const[comment,setcomment] = React.useState("")
 
 
   const commentsend = async (e) =>{
 
-axios.put("/thread/user",{message:comment,threadid:e.target.name})
+axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
 
 
 
@@ -24,7 +26,10 @@ axios.put("/thread/user",{message:comment,threadid:e.target.name})
 
   const getting = async (e)=>{
 console.log("clicked")
-axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment1(response.data)} ).catch((err)=>{console.log(err.message)})
+axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment1(response.data)
+return setspinner(false)
+
+} ).catch((err)=>{console.log(err.message)})
 
 
 
@@ -74,14 +79,14 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
           <p className="text-default-400 text-small">Followers</p>
         </div>
         <div className="flex  ">
-         <Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="text-white"  >  COMMENTS </Button>
+       {session &&  <Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="text-white"  >  COMMENTS </Button>}
          <Modal   isOpen={isOpen} scrollBehavior={"inside"} placement="center" className="  bg-zinc-700" onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader  className="flex flex-col gap-1">Comments</ModalHeader>
               <ModalBody  className=" scrollbar-hide justify-start flex flex-col ">
-               {comment1.map((response)=>{return <COMMENT  comment={response.comment} /> })}
+              {spinner? <Spinner/> : comment1.map((response)=>{return <COMMENT commentavatar={response.commentavatar} commentuser={response.commentuser} comment={response.comment} /> })}
               
               </ModalBody>
               <ModalFooter>

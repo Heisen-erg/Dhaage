@@ -1,18 +1,17 @@
 import React from "react";
 
-import {User} from "@nextui-org/react";
+import {Avatar, User} from "@nextui-org/react";
 import {Textarea} from "@nextui-org/react";
 
-export default function App({comment}) {
+export default function App({comment,commentavatar,commentuser}) {
   return (<div className="flex items-start  flex-col gap-3 ">
-    <User  
-    className="  justify-self-start" 
-     
-      description="dhaage user "
-      avatarProps={{
-        src: ""
-      }}
-    />
+   
+    <div className="flex gap-3">
+<Avatar src={commentavatar}/>
+<p className="mt-2 text-lime-300">{commentuser}</p>
+
+
+    </div>
     <Textarea
       isReadOnly
    

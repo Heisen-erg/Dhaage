@@ -72,7 +72,7 @@ axios.post("/thread/user",{thread,image:session.user.image,using:session.user.na
             </>
           )}
         </ModalContent>
-      </Modal> </div> : <div>not signed in</div>}
+      </Modal> </div> : <div className='h-screen w-full bg-black font-mono text-white text-3xl flex justify-center items-center '><h1>You Need To be Signed In To Start Using This Section </h1></div>}
   </>
   )
 }

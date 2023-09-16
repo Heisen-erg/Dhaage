@@ -36,7 +36,7 @@ export async function PUT(request){
     const result = await request.json()
     console.log(result)
    
-   await comments.create({threadid:result.threadid,comment:result.message})
+   await comments.create({threadid:result.threadid,comment:result.message,commentavatar:result.commentavatar,commentuser:result.commentuser})
    
 
 
