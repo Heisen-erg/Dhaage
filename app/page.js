@@ -35,7 +35,7 @@ useEffect(() => {
         <Leftbar/>
         <div style={{height:'fit-content'}}  className='flex items-center flex-col gap-6 z-0 text-gray-400 w-full  lg:w-5/6 '>
           {/* <Card1 photo={dhaage} thread={"#THIS IS THREADS(CLONE)  #CURRENTLY UNDER DEVELOPMENT #BUT YOU CAN CREATE YOUR THREAD UNDER CREATE SECTION "} /> */}
-          <Tanishq/>
+         
 {data.map((response)=>{
 
   return  <Card1 photo={response.image} username={response.using} thread={response.thread} key={response._id} id={response._id} />
