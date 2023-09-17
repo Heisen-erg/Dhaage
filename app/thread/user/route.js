@@ -50,12 +50,5 @@ return NextResponse.json({"message":"success"})
 
 
 
-export const config = {
-    api: {
-      bodyParser: {
-        sizeLimit: '40mb',
-      },
-    },
-   
-    maxDuration: 10,
-  }
+export const maxDuration = 5
+export const  sizeLimit = '30mb'
