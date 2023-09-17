@@ -19,38 +19,38 @@ const[image,setimage]=useState("")
     const send = async ()=>{
 
 
-if (image) {
-    async function convert(image){
+// if (image) {
+//     async function convert(image){
 
-return new Promise((resolve,reject)=>{
+// return new Promise((resolve,reject)=>{
 
- const filereader= new FileReader();
-  filereader.readAsDataURL(image);
-  filereader.onload=()=>{resolve(filereader.result)}
-  filereader.onerror=(error)=>{reject(error)}
-})
+//  const filereader= new FileReader();
+//   filereader.readAsDataURL(image);
+//   filereader.onload=()=>{resolve(filereader.result)}
+//   filereader.onerror=(error)=>{reject(error)}
+// })
 
-    }
+//     }
 
 
-    const result = await convert(image)
-   return axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:result}).then((data)=>{alert(data.data.message)})
-
+    // const result = await convert(image)
+  axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name}).then((data)=>{alert(data.data.message)})
+  //  ,postimage:result
   }
 
 
 
 
-axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:""}).then((data)=>{alert(data.data.message)
+// axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:""}).then((data)=>{alert(data.data.message)
 
-})
-
-
+// })
 
 
 
 
-    }
+
+
+    
   return (<>
   {session ?  <div className='bg-black h-screen w-full flex justify-center items-center'>  <Button onPress={onOpen}>Create Thread</Button>
       <Modal shadow='lg' backdrop='blur' isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -58,7 +58,7 @@ axios.post("/thread/user",{thread,image:session.user.image,using:session.user.na
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">Create Thread</ModalHeader>
-              <Input onChange={(e)=> setimage(e.target.files[0])} type='file' accept='image/jpeg, image/png image/jpg'  />
+            {/* <Input onChange={(e)=> setimage(e.target.files[0])} type='file' accept='image/jpeg, image/png image/jpg'  /> */}
 
               <ModalBody>
               <Textarea

@@ -49,6 +49,3 @@ return NextResponse.json({"message":"success"})
 }
 
 
-
-export const maxDuration = 5
-export const  sizeLimit = '30mb'
