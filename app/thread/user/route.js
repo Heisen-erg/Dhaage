@@ -20,9 +20,11 @@ return NextResponse.json({"message":"successfully uploaded"})
 
 
 export async function GET(request){
-    await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
+   await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
 await request
-    const result = await THREADS.find()
+    const result = await THREADS.find().sort({_id:-1}).limit(10)
+    
+   
 
 return  NextResponse.json(result)
 

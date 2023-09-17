@@ -1,9 +1,11 @@
+"use client"
+
+
 import React from 'react'
 import { useState } from 'react';
 import {  useSession } from 'next-auth/react'
 import {  Modal, Button,Textarea,  ModalContent,useDisclosure,   ModalHeader,   ModalBody,   ModalFooter, Input} from "@nextui-org/react";
 import axios from "axios"
-import { revalidatePath } from 'next/cache';
 
 
 const page = () => {
@@ -57,6 +59,7 @@ axios.post("/thread/user",{thread,image:session.user.image,using:session.user.na
             <>
               <ModalHeader className="flex flex-col gap-1">Create Thread</ModalHeader>
               <Input onChange={(e)=> setimage(e.target.files[0])} type='file' accept='image/jpeg, image/png image/jpg'  />
+
               <ModalBody>
               <Textarea
       label="Description"
