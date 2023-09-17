@@ -34,7 +34,7 @@ return  NextResponse.json(result)
 export async function PUT(request){
     await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
     const result = await request.json()
-    console.log(result)
+    
    
    await comments.create({threadid:result.threadid,comment:result.message,commentavatar:result.commentavatar,commentuser:result.commentuser})
    
