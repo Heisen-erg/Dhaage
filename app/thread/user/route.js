@@ -47,3 +47,15 @@ export async function PUT(request){
 return NextResponse.json({"message":"success"})
 
 }
+
+
+
+export const config = {
+    api: {
+      bodyParser: {
+        sizeLimit: '40mb',
+      },
+    },
+   
+    maxDuration: 10,
+  }
