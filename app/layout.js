@@ -18,13 +18,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-       <IKContext   publicKey="public_A5z/FWs66g4clXomlrG255YQlTg="
-
-urlEndpoint="https://ik.imagekit.io/c0z5bhoikn"
-
-transformationPosition="path"
-
-authenticationEndpoint="https://dhaage.heisenberg.in.net/"  > <Providers> <Auth> {children}  </Auth>  </Providers > </IKContext>  </body>
+      
+ <Providers> <Auth> {children}  </Auth>  </Providers >   </body>
     </html>
   )
 }
