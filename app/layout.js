@@ -5,7 +5,7 @@ import './globals.css'
 import Auth from './provider';
 import {Providers} from "./providers";
 import { Inter } from 'next/font/google'
-import { IKContext } from 'imagekitio-react';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
