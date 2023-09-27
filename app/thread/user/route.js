@@ -19,18 +19,41 @@ return NextResponse.json({"message":"successfully uploaded"})
 
 
 
-export async function GET(request){
-   await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
-await request
-    const result = await THREADS.find().sort({_id:-1})
+// export async function GET(request){
+//    await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
+// await request
+//     const result = await THREADS.find().sort({_id:-1})
     
    
 
-return  NextResponse.json(result)
+// return  NextResponse.json(result)
 
 
 
-}
+// }
+export async function GET(request){
+    await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
+ await request
+console.log(request)
+const {searchParams} = new URL(request.url);
+    const param = searchParams.get("page")
+
+ const page = param ||  1;
+ const pageSize = 10; // Adjust this as needed
+ const skip = (page - 1) * pageSize;
+
+ const result = await THREADS.find().sort({_id:'-1'})
+   .skip(skip)
+   .limit(pageSize);
+    //  const result = await THREADS.find().sort({_id:-1})
+     
+ 
+ 
+ return  NextResponse.json(result)
+ 
+ 
+ 
+ }
 
 
 export async function PUT(request){
