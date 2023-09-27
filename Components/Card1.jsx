@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef , useEffect } from "react";
 import {Card,CardHeader, CardBody, CardFooter, Avatar, Button, Input, Spinner} from "@nextui-org/react";
 import Image from "next/image";
  import Comment from "@/public/assets/comment.svg"
@@ -14,8 +15,65 @@ export default function App({photo,thread,id,username,postimage}) {
   const { data: session } = useSession()
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 const[comment,setcomment] = React.useState("")
+// const [currentVideoIndex, setCurrentVideoIndex] = React.useState("");
 
+// const playVideo = (index) => {
+//   if (currentVideoIndex !== null) {
+//     const currentVideo = document.getElementById(`video${currentVideoIndex}`);
+//     if (currentVideo) {
+//       currentVideo.pause();
+//     }
+//   }
 
+//   const newVideo = document.getElementById(`video${index}`);
+//   if (newVideo) {
+//     newVideo.play();
+//     setCurrentVideoIndex(index);
+//   }
+// };
+const videoRef = useRef(null);
+  const [isVideoInView, setIsVideoInView] = React.useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    const handleScroll = () => {
+      if (video) {
+        const rect = video.getBoundingClientRect();
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          // Video is in the viewport
+          setIsVideoInView(true);
+        } else {
+          // Video is out of the viewport
+          setIsVideoInView(false);
+        }
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup: remove event listener
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    // Check if the video element exists before attempting to play or pause it
+    if (video) {
+      // Play or pause the video based on visibility
+      if (isVideoInView) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+  }, [isVideoInView]);
+
+  
   const commentsend = async (e) =>{
 
 axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
@@ -58,10 +116,10 @@ return setspinner(false)
         </Button>
       </CardHeader>
       <CardBody className="px-1 py-5 h-auto w-fit overflow-y-hidden text-small text-default-400">
-      { postimage && <> {postimage.endsWith("mp4") && <video className="mt-4 lg:h-[300px] lg:w-[400px] " controls height={300} width={300} src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
-       {postimage.endsWith("jpg") && <Image className="mt-4" controls height={300} width={300} src={postimage} />}
-       {postimage.endsWith("jpeg") && <Image className="mt-4" controls height={300} width={300} src={postimage} />} 
-        {postimage.endsWith("png") && <Image className="mt-4" controls height={300} width={300} src={postimage} />} </>
+      { postimage && <> {postimage.endsWith("mp4") && <video ref={videoRef} className="mt-4 lg:h-[300px] lg:w-[400px] " /**id={`video${id}`} onPlayCapture={ () => playVideo(id)}**/ controls height={300} width={300} src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
+       {postimage.endsWith("jpg") && <Image className="mt-4" controls height={200} width={300} src={postimage} />}
+       {postimage.endsWith("jpeg") && <Image className="mt-4" controls height={200} width={300} src={postimage} />} 
+        {postimage.endsWith("png") && <Image className="mt-4" controls height={200} width={300} src={postimage} />} </>
       }
         <p className="mt-7">
        {thread}

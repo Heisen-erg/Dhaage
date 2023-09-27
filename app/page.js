@@ -56,7 +56,7 @@ useEffect(() => {
         <div style={{height:'fit-content',minHeight:'80vh'}}  className='flex  items-center flex-col gap-6 z-0 text-gray-400   w-full ' >
 {data.map((response)=>{
 
-   return   <Card1 photo={response.image} postimage={response.postimage} username={response.using} thread={response.thread} key={response._id} id={response._id} />
+   return   <Card1 photo={response.image} postimage={response.postimage}  username={response.using} thread={response.thread} key={response._id} id={response._id} />
 })} </div> 
 
 }

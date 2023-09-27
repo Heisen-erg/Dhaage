@@ -43,13 +43,13 @@ const[image,setimage]=useState("")
   return (<>
   { session ?  
            <div className='bg-black h-screen w-full flex justify-center items-center'>  <Button onPress={onOpen}>Create Thread</Button>
-      <Modal shadow='lg' backdrop='blur' isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal shadow='lg' backdrop='blur' placement="center" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">Create Thread</ModalHeader>
             {/* <Input onChange={(e)=> setimage(e.target.files[0])} type='file' accept='image/jpeg, image/png image/jpg'  /> */}
-           {showbutton && <CldUploadButton className=' bg-slate-400 ml-6 w-[65px] mt-3 mb-3 rounded-lg  ' uploadPreset="pxu3xyuk"  onUpload={(result)=>{ setimage(result.info.url); setshowbutton(false)
+           {showbutton && <CldUploadButton className=' bg-slate-400 ml-6 w-[65px] mt-3 mb-3 rounded-lg  '   uploadPreset="pxu3xyuk"  onUpload={(result)=>{ setimage(result.info.url); setshowbutton(false)
             return alert("Successfully added the file")
             }} /> }
             {!showbutton && <p className='ml-6  text-small mt-3 mb-3 '>file uploaded</p>}
