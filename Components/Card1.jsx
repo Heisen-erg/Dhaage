@@ -57,8 +57,12 @@ return setspinner(false)
           {isFollowed ? "Unfollow" : "Follow"}
         </Button>
       </CardHeader>
-      <CardBody className="px-3 py-4 h-auto overflow-y-hidden text-small text-default-400">
-       {/* {postimage && <Image  className="mt-4" height={200} width={200} src={postimage} blurDataURL={postimage} />} */}
+      <CardBody className="px-1 py-4 h-auto overflow-y-hidden text-small text-default-400">
+      { postimage && <> {postimage.endsWith("mp4") && <video className="mt-4 border-white border-solid" controls height={300} width={300} src={postimage} />}
+       {postimage.endsWith("jpg") && <Image className="mt-4" controls height={300} width={300} src={postimage} />}
+       {postimage.endsWith("jpeg") && <Image className="mt-4" controls height={300} width={300} src={postimage} />} 
+        {postimage.endsWith("png") && <Image className="mt-4" controls height={300} width={300} src={postimage} />} </>
+      }
         <p className="mt-4">
        {thread}
         </p>

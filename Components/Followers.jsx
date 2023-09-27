@@ -16,7 +16,7 @@ export default function App() {
             </CardBody>
           </Card>  
         </Tab>
-        <Tab className="text-2xl text-slate-100 z-1" key="music" title="Following">
+        <Tab className="text-xl text-slate-100 z-1" key="music" title="Following">
           <Card>
             <CardBody>
             Coming Soon....  {/* ?Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. */}
