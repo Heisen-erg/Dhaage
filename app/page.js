@@ -58,7 +58,7 @@ const [page, setPage] = useState(1);
       const response = await axios.get(`/thread/user?page=${page}`)
       const data1 =  response.data
       if(!(data1.length)){sethiddenloadmore(true)}
-     console.log(data1)
+     
       setItems([...items,...data1]);
       setspinner(false)
       setloadmore(false)
