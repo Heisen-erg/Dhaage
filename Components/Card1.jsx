@@ -79,8 +79,9 @@ const videoRef = useRef(null);
 setdisabled(true)
 
 await axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
+setdisabled(false)
+return getting()
 
-return setdisabled(false)
 
   }
 
@@ -155,7 +156,7 @@ return setspinner(false)
               </ModalBody>
               <ModalFooter>
                <Input  onChange={(e)=>{setcomment(e.target.value)}}  />
-                <Button name={id} disabled={disabled}  color="primary" onClick={commentsend} onPress={onClose}>
+                <Button name={id} Loading={disabled}  color="primary"  onClick={commentsend} >
                  Comment
                 </Button>
               </ModalFooter>
