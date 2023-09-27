@@ -78,9 +78,9 @@ const videoRef = useRef(null);
   const commentsend = async (e) =>{
 setdisabled(true)
 
-return axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
+await axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
 
-
+return setdisabled(false)
 
   }
 
