@@ -15,6 +15,7 @@ export default function App({photo,thread,id,username,postimage}) {
   const { data: session } = useSession()
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 const[comment,setcomment] = React.useState("")
+const[disabled,setdisabled]=React.useState(false)
 // const [currentVideoIndex, setCurrentVideoIndex] = React.useState("");
 
 // const playVideo = (index) => {
@@ -75,8 +76,9 @@ const videoRef = useRef(null);
 
   
   const commentsend = async (e) =>{
+setdisabled(true)
 
-axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
+return axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
 
 
 
@@ -117,9 +119,9 @@ return setspinner(false)
       </CardHeader>
       <CardBody className="px-1 py-5 h-auto w-fit overflow-y-hidden text-small text-default-400">
       { postimage && <> {postimage.endsWith("mp4") && <video ref={videoRef} className="mt-4 lg:h-[300px] lg:w-[400px] " /**id={`video${id}`} onPlayCapture={ () => playVideo(id)}**/ controls height={300} width={300} src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
-       {postimage.endsWith("jpg") && <Image className="mt-4" controls height={200} width={300} src={postimage} />}
-       {postimage.endsWith("jpeg") && <Image className="mt-4" controls height={200} width={300} src={postimage} />} 
-        {postimage.endsWith("png") && <Image className="mt-4" controls height={200} width={300} src={postimage} />} </>
+       {postimage.endsWith("jpg") && <Image className="mt-4 aspect-auto" controls  height={200} width={300} src={postimage} />}
+       {postimage.endsWith("jpeg") && <Image className="mt-4 aspect-auto" controls height={200} width={300} src={postimage} />} 
+        {postimage.endsWith("png") && <Image className="mt-4 aspect-auto" controls height={200} width={300} src={postimage} />} </>
       }
         <p className="mt-7">
        {thread}
@@ -153,7 +155,7 @@ return setspinner(false)
               </ModalBody>
               <ModalFooter>
                <Input  onChange={(e)=>{setcomment(e.target.value)}}  />
-                <Button name={id}  color="primary" onClick={commentsend} onPress={onClose}>
+                <Button name={id} disabled={disabled}  color="primary" onClick={commentsend} onPress={onClose}>
                  Comment
                 </Button>
               </ModalFooter>
