@@ -22,7 +22,7 @@ return NextResponse.json({"message":"successfully uploaded"})
 export async function GET(request){
    await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
 await request
-    const result = await THREADS.find().sort({_id:-1}).limit(20)
+    const result = await THREADS.find().sort({_id:-1})
     
    
 
