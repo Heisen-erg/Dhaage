@@ -93,7 +93,7 @@ const [page, setPage] = useState(1);
 {/* <button onClick={()=>{ setloadmore(true) 
   return setPage(page + 1)}} 
   className="text-white  " hidden={hiddenloadmore} disabled={loadmore} >Load more</button> */}
-   <Button size="sm" className=" bg-gray-500 mt-2 mb-5 text-small text-white"  onClick={()=>{ setloadmore(true) 
+   <Button size="sm" className=" bg-gray-500 mb-32 text-small text-white" style={{marginTop:'-20px'}} onClick={()=>{ setloadmore(true) 
   return setPage(page + 1)}} isDisabled={hiddenloadmore} isLoading={loadmore}>
       Load More
     </Button>
