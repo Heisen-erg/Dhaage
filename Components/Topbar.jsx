@@ -19,7 +19,7 @@ const Topbar = () => {
     {height:'10vh'}
 }>
 
-<h1 lang='hi' className= '  text-2xl text-white ml-6 lg:ml-20' style={{fontFamily:'cursive'}} >DHAAGE <span className='text-small ml-1 text-white' >v2.0</span> </h1>
+<h1 lang='hi' className= '  text-2xl text-white ml-6 xl:ml-14' style={{fontFamily:'cursive'}} >DHAAGE <span className='text-small ml-1 text-white' >v2.0</span> </h1>
 {/* धागे  */}
 
 

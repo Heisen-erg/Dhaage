@@ -8,7 +8,7 @@
 import React from 'react'
 import { useState } from 'react';
 import {  useSession } from 'next-auth/react'
-import {  Modal, Button,Textarea,  ModalContent,useDisclosure,   ModalHeader,   ModalBody,   ModalFooter, Input} from "@nextui-org/react";
+import {  Modal, Button,Textarea,  ModalContent,useDisclosure,   ModalHeader,   ModalBody,   ModalFooter, Input } from "@nextui-org/react";
 import axios from "axios"
 import { CldUploadButton } from 'next-cloudinary';
 // import cloudinary from '@/utils/Cloudinary';
@@ -18,6 +18,7 @@ import { CldUploadButton } from 'next-cloudinary';
 const Home = () => {
 const[thread,setthread]=useState("")
 const[image,setimage]=useState("")
+const[loader,setloader]=useState(false)
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const { data: session } = useSession()
     const[showbutton,setshowbutton] = useState(true)
@@ -27,15 +28,21 @@ const[image,setimage]=useState("")
 
 
  if (image) {
+const secure = `https${image.substring(4,image.length)}`
 
- return axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:image}).then((data)=>{alert(data.data.message)})
+ axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:secure}).then((data)=>{ 
+  return alert(data.data.message)})
+
   }
 
 
 
- if(!thread){ return   alert('Cannot Create an empty post , either upload a file or write something') }
- axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:""}).then((data)=>{alert(data.data.message)
-
+ if(!thread){  
+  
+  return alert('Cannot Create an empty post , either upload a file or write something')}
+ axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:""}).then((data)=>{
+  return  alert(data.data.message)
+ 
 })
 
 
@@ -69,7 +76,8 @@ const[image,setimage]=useState("")
               </ModalBody>
               <ModalFooter>
                 
-                <Button onClick={send} color="primary" onPress={onClose}>
+                <Button   onClick={send}
+                  color="primary"  onPress={onClose}>
                  CREATE
                 </Button>
               </ModalFooter>
