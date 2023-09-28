@@ -1,6 +1,10 @@
 "use client"
 
 
+
+
+// import { useToast } from "@/components/ui/use-toast"
+
 import React from 'react'
 import { useState } from 'react';
 import {  useSession } from 'next-auth/react'
@@ -17,7 +21,7 @@ const[image,setimage]=useState("")
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const { data: session } = useSession()
     const[showbutton,setshowbutton] = useState(true)
-
+    // const { toast } = useToast()
 
     const send = async ()=>{
 
@@ -29,7 +33,7 @@ const[image,setimage]=useState("")
 
 
 
-
+ if(!thread){ return   alert('Cannot Create an empty post , either upload a file or write something') }
  axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:""}).then((data)=>{alert(data.data.message)
 
 })
