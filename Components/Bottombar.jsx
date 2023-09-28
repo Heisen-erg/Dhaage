@@ -8,7 +8,7 @@ import mapping from "@/Data/leftbar"
 
 const Bottombar = () => {
   return (
-   <section className='  z-5 w-full sticky bottom-0  bg-black  ' style={{height:'10vh'}}>
+   <section className='  z-5 w-full fixed bottom-0  bg-black  ' style={{height:'10vh'}}>
 <div className='flex flex-row  pt-5 justify-evenly  items-center w-full  lg:hidden sm:visible    ' >
     
 {mapping.map((response)=>{
