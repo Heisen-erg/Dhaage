@@ -34,7 +34,7 @@ return NextResponse.json({"message":"successfully uploaded"})
 export async function GET(request){
     await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
  await request
-console.log(request)
+
 const {searchParams} = new URL(request.url);
     const param = searchParams.get("page")
 

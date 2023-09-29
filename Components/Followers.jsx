@@ -2,29 +2,38 @@
 
 
 import React from "react";
-
+import Userpost from "@/Components/Userpost"
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
 
 export default function App() {
-  return (
-    <div  className=" bg-black h-screen flex items-center w-full flex-col">
-      <Tabs color="primary" variant="underlined"  fullWidth aria-label="Options">
-        <Tab className="text-xl text-white" key="photos" title="Followers">
-          <Card>
-            <CardBody>
-            Coming Soon.... {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. */}
-            </CardBody>
-          </Card>  
+  return (<>
+
+    
+    <div  className=" bg-black h-fit min-h-[100vh] flex items-center pt-5  flex-col ">
+      <Tabs color="primary" size="lg"   aria-label="Options">
+        <Tab className="  text-sm text-white" style={{width:'30vw'}} key="photos" title="Your Posts">
+      <Userpost/> 
+        
+         
         </Tab>
-        <Tab className="text-xl text-slate-100 z-1" key="music" title="Following">
-          <Card>
-            <CardBody>
-            Coming Soon....  {/* ?Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. */}
-            </CardBody>
-          </Card>  
+        <Tab className="text-sm text-slate-100 z-1" key="music" title="Interactions">
+        <div className="flex w-full flex-col">
+    <Tabs color="secondary" size="lg" >
+      
+        <Tab  title={"followers"}>
+            <h1 className="text-center">Coming soon.......</h1>
+        </Tab>
+        <Tab  title={"following"}>
+        <h1 className="text-center">Coming soon.......</h1>
+        </Tab>
+      
+    </Tabs>
+  </div>    
         </Tab>
        
       </Tabs>
     </div>  
+
+    </>
   );
 }

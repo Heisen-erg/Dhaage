@@ -3,7 +3,7 @@ import React from 'react'
 
 const CustomSpinner = () => {
   return (
-   <div className='bg-black flex justify-center h-screen w-full items-center'>
+   <div className='bg-black flex justify-center h-[80vh] w-full items-center'>
 <Spinner/>
 
    </div>

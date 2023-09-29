@@ -16,35 +16,42 @@ import { CldUploadButton } from 'next-cloudinary';
 
 
 const Home = () => {
+  const[disabled,setdisabled]=useState(false)
 const[thread,setthread]=useState("")
 const[image,setimage]=useState("")
 const[loader,setloader]=useState(false)
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const { data: session } = useSession()
     const[showbutton,setshowbutton] = useState(true)
-    // const { toast } = useToast()
+  
 
     const send = async ()=>{
 
-
+setdisabled(true)
  if (image) {
 const secure = `https${image.substring(4,image.length)}`
 
- axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:secure}).then((data)=>{ 
-  return alert(data.data.message)})
+ axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:secure,usermail:session.user.email}).then((data)=>{ 
+  alert(data.data.message)
+  return setdisabled(false) })
 
+  return
   }
 
 
 
  if(!thread){  
-  
+  setdisabled(false)
   return alert('Cannot Create an empty post , either upload a file or write something')}
- axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:""}).then((data)=>{
+  
+  else{
+ axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:"",usermail:session.user.email}).then((data)=>{
+  setdisabled(false)
   return  alert(data.data.message)
  
 })
-
+return
+  }
 
     }
 
@@ -76,8 +83,8 @@ const secure = `https${image.substring(4,image.length)}`
               </ModalBody>
               <ModalFooter>
                 
-                <Button   onClick={send}
-                  color="primary"  onPress={onClose}>
+                <Button   isDisabled={disabled}  onClick={send}
+                  color="primary" >
                  CREATE
                 </Button>
               </ModalFooter>

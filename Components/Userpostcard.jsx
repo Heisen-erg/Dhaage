@@ -1,3 +1,6 @@
+"use client"
+
+
 import React from "react";
 import { useRef , useEffect } from "react";
 import {Card,CardHeader, CardBody, CardFooter, Avatar, Button, Input, Spinner} from "@nextui-org/react";
@@ -7,9 +10,11 @@ import COMMENT from "@/Components/Comment"
  import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,  useDisclosure} from "@nextui-org/react";
  import axios from "axios"
  import { useSession } from "next-auth/react";
+import { revalidatePath } from "next/cache";
 
 export default function App({photo,thread,id,username,postimage}) {
   const [isFollowed, setIsFollowed] = React.useState(false);
+  const[loader,setloader]=React.useState(false)
   const[comment1,setcomment1]=React.useState([])
   const[spinner,setspinner]=React.useState(true)
   const { data: session } = useSession()
@@ -75,15 +80,15 @@ const videoRef = useRef(null);
   }, [isVideoInView]);
 
   
-  const commentsend = async (e) =>{
+//   const commentsend = async (e) =>{
 
 
- return await axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
+//  return await axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
 
 
 
 
-  }
+//   }
 
   const getting = async (e)=>{
 console.log("clicked")
@@ -97,8 +102,25 @@ return setspinner(false)
 
   }
 
+
+const Deleteuserpost = (e)=>{
+setloader(true)
+axios.put('/userfetch',{threadid:e.target.name}).then((response)=>{ 
+ 
+  setloader(false)
+return  window.location.reload()   //window reload
+})
+
+
+
+}
+
+
   return (<>
-    <Card className=" z-0 bg-black pt-12 pb-12 pl-5 w-full lg:w-5/6   "  fullWidth >
+
+  {/* <section  className="flex justify-center bg-black w-[90vw] h-fit "> */}
+  
+    <Card className=" z-0 bg-black pt-12 pb-12 pl-5 w-full lg:w-5/6    "  >
       <CardHeader className="justify-between">
         <div className="flex gap-5">
           <Avatar isBordered radius="full" size="md" src={photo} />
@@ -107,7 +129,8 @@ return setspinner(false)
             <h5 className="text-small ml-2 tracking-tight text-default-400">{username}</h5>
           </div>
         </div>
-        <Button
+        <Button size="sm" name={id} isLoading={loader} onClick={Deleteuserpost} className="mr-4" radius="lg">Delete</Button>
+        {/* <Button
           className={isFollowed ? "bg-transparent text-white border-default-200 mr-6 " : "mr-6 text-white "}
           color="primary"
           radius="full"
@@ -116,7 +139,7 @@ return setspinner(false)
           onPress={() => setIsFollowed(!isFollowed)}
         >
           {isFollowed ? "Unfollow" : "Follow"}
-        </Button>
+        </Button> */}
       </CardHeader>
       <CardBody className="px-1 py-5 h-auto w-fit overflow-y-hidden text-small text-default-400">
       { postimage && <> {postimage.endsWith("mp4") && <video ref={videoRef} className="mt-4 lg:h-[300px] lg:w-[400px] " /**id={`video${id}`} onPlayCapture={ () => playVideo(id)}**/ controls height={300} width={300} src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
@@ -124,11 +147,9 @@ return setspinner(false)
        {postimage.endsWith("jpeg") && <Image className="mt-4 aspect-auto" controls height={200} width={300} src={postimage} />} 
         {postimage.endsWith("png") && <Image className="mt-4 aspect-auto" controls height={200} width={300} src={postimage} />} </>
       }
-      
-        <p className="mt-8 mb-5 text-lg text-blue-200">  
+        <p className=" text-lg text-blue-200 mt-8 mb-5">
        {thread}
-        </p> 
-        {/* mb-5 is extra  */}
+        </p>
         {/* <span className="pt-2">
           Coming Soon... 
           <span className="py-2" aria-label="computer" role="img">
@@ -146,7 +167,7 @@ return setspinner(false)
           <p className="text-default-400 text-small">Followers</p>
         </div>
         <div className="flex  ">
-       {session &&  <Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="text-white"  >  COMMENTS </Button>}
+       <Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="text-white mt-1"  >  COMMENTS </Button>
          <Modal   isOpen={isOpen} scrollBehavior={"inside"} placement="center" className="  bg-zinc-700" onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
@@ -157,16 +178,17 @@ return setspinner(false)
               
               </ModalBody>
               <ModalFooter>
-               <Input  onChange={(e)=>{setcomment(e.target.value)}}  />
-                <Button name={id}   color="primary" onClick={commentsend} onPress={onClose} >
-                 Comment
+              
+                <Button name={id}   color="primary"  onPress={onClose} >
+                Close
                 </Button>
               </ModalFooter>
             </>
           )}
         </ModalContent>
       </Modal>
-          {/* <Button   size="sm" color="slate-100" ><Image src={heart} height={26} width={26} className=" text-black" />  </Button> */}
+           {/* <Button   size="sm" color="slate-100" ><Image src={heart} height={26} width={26} className=" text-black" />  </Button> */}
+          
         </div>
       </CardFooter>
     </Card></>

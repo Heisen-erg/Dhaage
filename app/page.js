@@ -12,8 +12,10 @@ import dhaage from "@/public/assets/dhaage.png"
 import CustomSpinner from "@/Components/CustomSpinner";
 // import InfiniteScroll from "react-infinite-scroll-component";
 import { Button, Spinner } from "@nextui-org/react";
+import { useSession } from "next-auth/react";
 export default function Home() {
 const[data,setdata]=useState([])
+
 const[spinner,setspinner]=useState(true)
 const[loadmore,setloadmore]=useState(false)
 const[hiddenloadmore,sethiddenloadmore]=useState(false)
@@ -126,6 +128,8 @@ const [page, setPage] = useState(1);
   
  )
 }
+
+
 
 
 
