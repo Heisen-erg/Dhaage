@@ -16,9 +16,9 @@ useEffect( () => {
   
    {session && axios.post("/userfetch",{mail:session.user.email}).then((response)=>{setuserposts(response.data) 
     
-    return setspinner(false)})}
+    setspinner(false)})}
 
-
+    return 
 
  }, [])
 
