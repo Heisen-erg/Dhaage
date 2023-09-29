@@ -37,5 +37,4 @@ await THREADS.deleteOne({_id:threadid})
 await comments.deleteMany({threadid:threadid})
 
 return  NextResponse.json({message:"successfully deleted the post"})
-
  }

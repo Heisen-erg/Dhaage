@@ -3,6 +3,7 @@
 
 import React from "react";
 import { useRef , useEffect } from "react";
+import  Router from 'next/router'
 import {Card,CardHeader, CardBody, CardFooter, Avatar, Button, Input, Spinner} from "@nextui-org/react";
 import Image from "next/image";
  import Comment from "@/public/assets/comment.svg"
@@ -10,8 +11,8 @@ import COMMENT from "@/Components/Comment"
  import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,  useDisclosure} from "@nextui-org/react";
  import axios from "axios"
  import { useSession } from "next-auth/react";
-import { revalidatePath } from "next/cache";
 
+import { useRouter } from 'next/navigation'
 export default function App({photo,thread,id,username,postimage}) {
   const [isFollowed, setIsFollowed] = React.useState(false);
   const[loader,setloader]=React.useState(false)
@@ -101,14 +102,15 @@ return setspinner(false)
 
 
   }
-
+  const Router = useRouter()
 
 const Deleteuserpost = (e)=>{
 setloader(true)
 axios.put('/userfetch',{threadid:e.target.name}).then((response)=>{ 
  
-  setloader(false)
-return  window.location.reload()   //window reload
+ setloader(false)
+  return window.location.reload()
+  
 })
 
 

@@ -7,6 +7,7 @@ import axios from "axios"
 import { useSession } from 'next-auth/react'
 import { Spinner } from '@nextui-org/react'
 
+
 export default function Userpost ()  {
 const[useposts,setuserposts]=useState([])
 const[spinner,setspinner]=useState(true)
@@ -18,7 +19,7 @@ useEffect( () => {
     
     setspinner(false)})}
 
-    return 
+  
 
  }, [])
 
