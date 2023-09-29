@@ -19,6 +19,7 @@ const Home = () => {
   const[disabled,setdisabled]=useState(false)
 const[thread,setthread]=useState("")
 const[image,setimage]=useState("")
+
 const[loader,setloader]=useState(false)
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const { data: session } = useSession()
@@ -32,8 +33,12 @@ setdisabled(true)
 const secure = `https${image.substring(4,image.length)}`
 
  axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:secure,usermail:session.user.email}).then((data)=>{ 
+  setthread("")
+  setshowbutton(true)
+  document.getElementById('value').value=""
+  setimage("")
   alert(data.data.message)
-  return setdisabled(false) })
+  setdisabled(false) })
 
   return
   }
@@ -47,7 +52,10 @@ const secure = `https${image.substring(4,image.length)}`
   else{
  axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:"",usermail:session.user.email}).then((data)=>{
   setdisabled(false)
-  return  alert(data.data.message)
+  setthread("")
+  setshowbutton(true)
+  document.getElementById('value').value=""
+    alert(data.data.message)
  
 })
 return
@@ -78,12 +86,13 @@ return
       labelPlacement="outside"
       placeholder="Enter your description"
       className="max-w-xs"
+      id='value'
       onChange={(e)=>{setthread(e.target.value)}}
     />
               </ModalBody>
               <ModalFooter>
                 
-                <Button   isDisabled={disabled}  onClick={send}
+                <Button   isLoading={disabled}   onClick={send}
                   color="primary" >
                  CREATE
                 </Button>
