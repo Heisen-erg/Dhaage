@@ -98,7 +98,7 @@ return setspinner(false)
   }
 
   return (<>
-    <Card className=" z-0 bg-black pt-12 pb-12 pl-5 w-full lg:w-5/6   "  fullWidth >
+    <Card className=" z-0 bg-black pt-12 pb-12 pl-5 mb-2  w-full lg:w-5/6   "  fullWidth >
       <CardHeader className="justify-between">
         <div className="flex gap-5">
           <Avatar isBordered radius="full" size="md" src={photo} />
@@ -119,13 +119,13 @@ return setspinner(false)
         </Button>
       </CardHeader>
       <CardBody className="px-1 py-5 h-auto w-fit overflow-y-hidden text-small text-default-400">
-      { postimage && <> {postimage.endsWith("mp4") && <video ref={videoRef} className="mt-4 lg:h-[300px] lg:w-[400px] " /**id={`video${id}`} onPlayCapture={ () => playVideo(id)}**/ controls height={300} width={300}  muted src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
+      { postimage && <> {postimage.endsWith("mp4") && <video ref={videoRef} className="mt-4 lg:h-[300px] aspect-video rounded-lg shadow-lg lg:w-[400px] " /**id={`video${id}`} onPlayCapture={ () => playVideo(id)}**/ controls height={300} width={300}  muted src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
        {postimage.endsWith("jpg") && <Image className="mt-4 aspect-auto" controls  height={200} width={300} src={postimage} />}
        {postimage.endsWith("jpeg") && <Image className="mt-4 aspect-auto" controls height={200} width={300} src={postimage} />} 
         {postimage.endsWith("png") && <Image className="mt-4 aspect-auto" controls height={200} width={300} src={postimage} />} </>
       }
       
-        <p className="mt-8 mb-5 text-lg text-blue-200">  
+        <p className="mt-10 mb-5 text-ellipsis text-base w-[90%] text-blue-200">  
        {thread}
         </p> 
         {/* mb-5 is extra  */}
