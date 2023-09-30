@@ -60,9 +60,10 @@ export async function PUT(request){
     await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
     const result = await request.json()
     
-   
+    const p = await comments.countDocuments({threadid:result.threadid})
    await comments.create({threadid:result.threadid,comment:result.message,commentavatar:result.commentavatar,commentuser:result.commentuser})
-   // await THREADS.findById(result.threadid).populate('comments')
+    
+   await THREADS.updateOne({_id:result.threadid},{commentsnumber:p+1})
 
 
 

@@ -7,8 +7,8 @@ import COMMENT from "@/Components/Comment"
  import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,  useDisclosure} from "@nextui-org/react";
  import axios from "axios"
  import { useSession } from "next-auth/react";
-
-export default function App({photo,thread,id,username,postimage}) {
+ import {Chip} from "@nextui-org/react";
+export default function App({photo,thread,id,username,postimage,number}) {
   const [isFollowed, setIsFollowed] = React.useState(false);
   const[comment1,setcomment1]=React.useState([])
   const[spinner,setspinner]=React.useState(true)
@@ -81,7 +81,7 @@ const videoRef = useRef(null);
   
   const commentsend = async (e) =>{
 
-
+if(!comment){return alert("comment is empty")}
  return await axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
 
 
@@ -140,7 +140,7 @@ return setspinner(false)
           </span>
         </span> */}
       </CardBody>
-      <CardFooter className="gap-5  ">
+      <CardFooter className="gap-5  " style={{marginLeft:'-5px'}}>
         {/* <div className="flex gap-1">
           <p className="font-semibold text-default-400 text-small">4</p>
           <p className=" text-default-400 text-small">Following</p>
@@ -150,7 +150,7 @@ return setspinner(false)
           <p className="text-default-400 text-small">Followers</p>
         </div>
         <div className="flex  ">
-       {session &&  <Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="text-white"  >  COMMENTS </Button>}
+       {session &&  <><Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="text-white"  >  COMMENTS </Button> {number && <Chip style={{marginLeft:'-9px'}} className="mt-1 bg-blue-600 text-white" size="sm"   >{number}</Chip>}</>}
          <Modal   isOpen={isOpen} scrollBehavior={"inside"} placement="center" className="  bg-zinc-700" onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
