@@ -6,8 +6,10 @@ import Image from "next/image";
 import COMMENT from "@/Components/Comment"
  import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,  useDisclosure} from "@nextui-org/react";
  import axios from "axios"
+ import { animateScroll } from "react-scroll";
  import { useSession } from "next-auth/react";
  import {Chip} from "@nextui-org/react";
+ import ScrollToBottom from 'react-scroll-to-bottom';
 export default function App({photo,thread,id,username,postimage,number}) {
   const [isFollowed, setIsFollowed] = React.useState(false);
   const[comment1,setcomment1]=React.useState([])
@@ -15,7 +17,9 @@ export default function App({photo,thread,id,username,postimage,number}) {
   const { data: session } = useSession()
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 const[comment,setcomment] = React.useState("")
-const[disabled,setdisabled]=React.useState(false)
+const[loadinger,setloadinger]=React.useState(false)
+const[threadid,setthreadid]=React.useState("")
+const[bottomer,setbottomer]=React.useState(false)
 // const [currentVideoIndex, setCurrentVideoIndex] = React.useState("");
 
 // const playVideo = (index) => {
@@ -80,26 +84,52 @@ const videoRef = useRef(null);
 
   
   const commentsend = async (e) =>{
-
-if(!comment){return alert("comment is empty")}
- return await axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
-
-
+setloadinger(true)
+if(!comment){setloadinger(false)
+  return alert("comment is empty")}
+  await axios.put("/thread/user",{message:comment,threadid:e.target.name,commentavatar:session.user.image,commentuser:session.user.name})
+  // .then(()=>{})
+  setloadinger(false)
+  // getting2()
+  return
 
 
   }
+//  const scrollToBottom = () => {
+//     animateScroll.scrollToBottom({
+//       containerId: "hh"
+//     });
+// }
+useEffect(() => {
+
+  }, [])
 
   const getting = async (e)=>{
 console.log("clicked")
-axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment1(response.data)
-return setspinner(false)
-
+axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment1((response.data))
+  setthreadid(e.target.name)
+ setspinner(false)
+ 
+ return
 } ).catch((err)=>{console.log(err.message)})
 
 
 
 
   }
+  // const getting2 = async (e)=>{
+  //   console.log("clicked")
+  //   axios.post('/comments',{getthreadid:threadid}).then((response)=>{setcomment1((response.data))
+  //     setspinner(false)
+  //     scrollToBottom()
+  //   return 
+    
+  //   } ).catch((err)=>{console.log(err.message)})
+    
+    
+    
+    
+  //     }
 
   return (<>
     <Card className=" z-0 bg-black pt-12 pb-12 pl-5 mb-2  w-full lg:w-5/6   "  fullWidth >
@@ -156,13 +186,15 @@ return setspinner(false)
           {(onClose) => (
             <>
               <ModalHeader  className="flex flex-col gap-1">Comments</ModalHeader>
-              <ModalBody  className=" scrollbar-hide justify-start flex flex-col ">
-              {spinner? <Spinner/> : comment1.map((response)=>{return <COMMENT commentavatar={response.commentavatar} commentuser={response.commentuser} comment={response.comment} /> })}
-              
+              <ModalBody id="hh"  className=" scrollbar-hide justify-start flex flex-col ">
+             
+              {spinner? <Spinner/> : comment1.map((response)=>{  return  <COMMENT commentavatar={response.commentavatar} commentuser={response.commentuser} comment={response.comment} /> 
+               })}
+            
               </ModalBody>
               <ModalFooter>
                <Input  onChange={(e)=>{setcomment(e.target.value)}}  />
-                <Button name={id}   color="primary" onClick={commentsend} onPress={onClose} >
+                <Button name={id}   color="primary" onClick={commentsend} /**isLoading={loadinger}**/ onPress={onClose} >
                  Comment
                 </Button>
               </ModalFooter>
