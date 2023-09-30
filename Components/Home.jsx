@@ -14,7 +14,7 @@ import { CldUploadButton } from 'next-cloudinary';
 // import cloudinary from '@/utils/Cloudinary';
 
 
-
+let secure;
 const Home = () => {
   const[disabled,setdisabled]=useState(false)
 const[thread,setthread]=useState("")
@@ -30,8 +30,9 @@ const[loader,setloader]=useState(false)
 
 setdisabled(true)
  if (image) {
-const secure = `https${image.substring(4,image.length)}`
-
+  if(image.endsWith("mp4")){ secure = `https://res.cloudinary.com/dan3pvqqm/video/upload/q_90/${image.substring(49,image.length)}`}
+ else { secure = `https://res.cloudinary.com/dan3pvqqm/image/upload/c_scale,h_200/${image.substring(49,image.length)}`}
+console.log(secure)
  axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:secure,usermail:session.user.email}).then((data)=>{ 
   setthread("")
   setshowbutton(true)

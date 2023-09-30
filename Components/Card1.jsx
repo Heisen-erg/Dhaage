@@ -120,9 +120,9 @@ return setspinner(false)
       </CardHeader>
       <CardBody className="px-1 py-5 h-auto w-fit overflow-y-hidden text-small text-default-400">
       { postimage && <> {postimage.endsWith("mp4") && <video ref={videoRef} className="mt-4 lg:h-[300px] aspect-video rounded-lg shadow-lg lg:w-[400px] " /**id={`video${id}`} onPlayCapture={ () => playVideo(id)}**/ controls height={300} width={300}  muted src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
-       {postimage.endsWith("jpg") && <Image className="mt-4 aspect-auto" controls  height={200} width={300} src={postimage} />}
-       {postimage.endsWith("jpeg") && <Image className="mt-4 aspect-auto" controls height={200} width={300} src={postimage} />} 
-        {postimage.endsWith("png") && <Image className="mt-4 aspect-auto" controls height={200} width={300} src={postimage} />} </>
+       {postimage.endsWith("jpg") && <Image className="mt-4 aspect-auto" controls  height={200} width={200} src={postimage} />}
+       {postimage.endsWith("jpeg") && <Image className="mt-4 aspect-auto" controls height={200} width={200} src={postimage} />} 
+        {postimage.endsWith("png") && <Image className="mt-4 aspect-auto" controls height={200} width={200} src={postimage} />} </>
       }
       
         <p className="mt-10 mb-5 text-ellipsis text-base w-[90%] text-blue-200">  
