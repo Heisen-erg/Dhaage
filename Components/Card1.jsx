@@ -32,6 +32,10 @@ const[disabled,setdisabled]=React.useState(false)
 //     setCurrentVideoIndex(index);
 //   }
 // };
+
+
+
+
 const videoRef = useRef(null);
   const [isVideoInView, setIsVideoInView] = React.useState(false);
 
@@ -125,7 +129,7 @@ return setspinner(false)
         {postimage.endsWith("png") && <Image className="mt-4 aspect-auto" controls height={200} width={200} src={postimage} />} </>
       }
       
-        <p className="mt-10 mb-5 text-ellipsis text-base w-[90%] text-blue-200">  
+        <p className="mt-10 mb-5  text-base    lg:w-[40vw] w-[80vw]   text-blue-200">  
        {thread}
         </p> 
         {/* mb-5 is extra  */}

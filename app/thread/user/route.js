@@ -62,7 +62,7 @@ export async function PUT(request){
     
    
    await comments.create({threadid:result.threadid,comment:result.message,commentavatar:result.commentavatar,commentuser:result.commentuser})
-   
+   // await THREADS.findById(result.threadid).populate('comments')
 
 
 

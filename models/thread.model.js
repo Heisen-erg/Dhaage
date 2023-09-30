@@ -9,7 +9,12 @@ const thread = new Schema({
     image: String,
     using:String,
     postimage:String,
-    usermail:String
+    usermail:String,
+   //  comments:[{ 
+   //    type: mongoose.Schema.Types.ObjectId,
+   //    ref: 'comments', // This should match the model name you define for the User schema
+   //   }]
+
 
 
 

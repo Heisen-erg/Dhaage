@@ -58,6 +58,7 @@ const [page, setPage] = useState(1);
     const fetchItems = async () => {
      
       const response = await axios.get(`/thread/user?page=${page}`)
+      
       const data1 =  response.data
       if(!(data1.length)){sethiddenloadmore(true)}
      
