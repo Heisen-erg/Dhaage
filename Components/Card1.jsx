@@ -2,7 +2,7 @@ import React from "react";
 import { useRef , useEffect } from "react";
 import {Card,CardHeader, CardBody, CardFooter, Avatar, Button, Input, Spinner} from "@nextui-org/react";
 import Image from "next/image";
- import Comment from "@/public/assets/comment.svg"
+ import Comment from "@/public/assets/comment (1).svg"
 import COMMENT from "@/Components/Comment"
  import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,  useDisclosure} from "@nextui-org/react";
  import axios from "axios"
@@ -153,7 +153,7 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
         </Button>
       </CardHeader>
       <CardBody className="px-1 py-5 h-auto w-fit overflow-y-hidden text-small text-default-400">
-      { postimage && <> {postimage.endsWith("mp4") && <video ref={videoRef} className="mt-4 lg:h-[300px] aspect-video rounded-lg shadow-lg lg:w-[400px] " /**id={`video${id}`} onPlayCapture={ () => playVideo(id)}**/ controls height={300} width={300}  muted src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
+      { postimage && <> {postimage.endsWith("mp4") && <video ref={videoRef} className="mt-4 lg:h-[400px] md:h-[300px] md:w-[500px] aspect-video rounded-lg shadow-lg lg:w-[500px] " /**id={`video${id}`} onPlayCapture={ () => playVideo(id)}**/ controls height={300} width={300}  muted src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
        {postimage.endsWith("jpg") && <Image className="mt-4 aspect-auto" controls  height={200} width={200} src={postimage} />}
        {postimage.endsWith("jpeg") && <Image className="mt-4 aspect-auto" controls height={200} width={200} src={postimage} />} 
         {postimage.endsWith("png") && <Image className="mt-4 aspect-auto" controls height={200} width={200} src={postimage} />} </>
@@ -180,7 +180,7 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
           <p className="text-default-400 text-small">Followers</p>
         </div>
         <div className="flex  ">
-       {session &&  <><Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="text-white"  >  COMMENTS </Button> {number && <Chip style={{marginLeft:'-9px'}} className="mt-1 bg-blue-600 text-white" size="sm"   >{number}</Chip>}</>}
+       {session &&  <><Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="  text-red-200"  > <Image src={Comment} className=" text-white z-5" width={20} height={20} alt="" srcset="" /> {number && <Chip  className=" text-[12px] pr-7 w-5 h-4 bg-blue-600 text-white mb-4 ml-[-9px] text-center"    >{number}</Chip>} </Button> </>}
          <Modal   isOpen={isOpen} scrollBehavior={"inside"} placement="center" className="  bg-zinc-700" onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
