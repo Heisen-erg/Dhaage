@@ -180,7 +180,7 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
           <p className="text-default-400 text-small">Followers</p>
         </div>
         <div className="flex  ">
-       {session &&  <><Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="  text-red-200"  > <Image src={Comment} className=" text-white z-5" width={20} height={20} alt="" srcset="" /> {number && <Chip  className=" text-[12px] pr-7 w-5 h-4 bg-blue-300 text-black mb-4 ml-[-9px] text-center"    >{number}</Chip>} </Button> </>}
+       {session &&  <><Button  size="sm" color="slate" name={id}    onPress={onOpen} onPressStart={getting}   className="  text-red-200"  > <Image src={Comment} className=" text-white z-5" width={20} height={20} alt="" srcset="" /> {number && <Chip  className=" text-[12px] pr-7 w-4 h-4 bg-blue-300 text-black mb-4 ml-[-9px] text-center"    >{number}</Chip>} </Button> </>}
          <Modal   isOpen={isOpen} scrollBehavior={"inside"} placement="center" className="  bg-zinc-700" onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
