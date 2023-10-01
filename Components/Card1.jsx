@@ -2,7 +2,7 @@ import React from "react";
 import { useRef , useEffect } from "react";
 import {Card,CardHeader, CardBody, CardFooter, Avatar, Button, Input, Spinner} from "@nextui-org/react";
 import Image from "next/image";
- import Comment from "@/public/assets/comment (1).svg"
+ import Comment from "@/public/assets/commenting.svg"
 import COMMENT from "@/Components/Comment"
  import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,  useDisclosure} from "@nextui-org/react";
  import axios from "axios"
