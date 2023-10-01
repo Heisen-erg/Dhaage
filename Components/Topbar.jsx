@@ -29,13 +29,13 @@ const Topbar = () => {
         <Avatar src={session? session.user.image  : ""   } className=' mr-6'  />
         
       </DropdownTrigger>
-      <DropdownMenu aria-label="Dynamic Actions"   className=' bg-slate-300 text-black flex fles-col gap-3'> 
+      <DropdownMenu aria-label="Dynamic Actions"   className=' bg-black rounded-lg  text-black flex fles-col gap-3'> 
     { session?
          
        
           
           < DropdownItem
-         color='default'
+         className='rounded-lg bg-slate-300 '
        onClick={()=>{
 
         
@@ -44,11 +44,11 @@ const Topbar = () => {
         signOut()}}
           >
           
-           Signout
+           SignOut
           </DropdownItem>
           :
           <DropdownItem
-          color='default'
+          className=' rounded-lg bg-slate-300  '
           onClick={()=>{
             
             
@@ -57,7 +57,7 @@ const Topbar = () => {
         }}
              >
              
-               Sigin
+               SignIn
              </DropdownItem>
 
           }
