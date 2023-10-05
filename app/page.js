@@ -89,7 +89,7 @@ const [page, setPage] = useState(1);
         
         
         
-        <div style={{height:'fit-content',minHeight:'70vh'}}  className='flex mt-[10vh] mb-[10vh] items-center flex-col gap-6 z-0 text-gray-400   w-full ' >
+        <div style={{height:'fit-content',minHeight:'70vh'}}  className='flex mt-[10vh]  items-center flex-col gap-6 z-0 text-gray-400   w-full ' >
 {items.map((response)=>{
 
    return   <Card1 photo={response.image} postimage={response.postimage}  username={response.using} thread={response.thread} number={response.commentsnumber} key={response._id} id={response._id} />
