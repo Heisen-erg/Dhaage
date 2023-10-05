@@ -32,7 +32,7 @@ setdisabled(true)
  if (image) {
   if(image.endsWith("mp4")){ secure = `https://res.cloudinary.com/dan3pvqqm/video/upload/${image.substring(49,image.length)}`}
  else { secure = `https://res.cloudinary.com/dan3pvqqm/image/upload/${image.substring(49,image.length)}`}
-console.log(secure)
+// console.log(secure)
  axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:secure,usermail:session.user.email}).then((data)=>{ 
   setthread("")
   setshowbutton(true)
