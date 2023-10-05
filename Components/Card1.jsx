@@ -137,7 +137,7 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
       <CardHeader className="justify-between">
         <div className="flex gap-5">
           <Avatar isBordered radius="full" size="md" src={photo} />
-          <div className="flex gap-2 ml-[-4vw] md:gap-3 md:ml-0 items-center justify-center">
+          <div className="flex gap-2 ml-[-3vw] md:gap-3 md:ml-0 items-center justify-center">
         
             <h5 className="text-small ml-2 tracking-tight text-default-400">{username}</h5>
             {username === "HEISEN BERG" && <Image src={twitter} alt="" h={24} w={24} />}
