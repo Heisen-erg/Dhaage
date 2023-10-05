@@ -3,6 +3,7 @@ import { useRef , useEffect } from "react";
 import {Card,CardHeader, CardBody, CardFooter, Avatar, Button, Input, Spinner} from "@nextui-org/react";
 import Image from "next/image";
  import Comment from "@/public/assets/commenting.svg"
+ import twitter from "@/public/assets/Twitter.svg"
 import COMMENT from "@/Components/Comment"
  import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,  useDisclosure} from "@nextui-org/react";
  import axios from "axios"
@@ -136,13 +137,15 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
       <CardHeader className="justify-between">
         <div className="flex gap-5">
           <Avatar isBordered radius="full" size="md" src={photo} />
-          <div className="flex flex-col gap-1 items-start justify-center">
+          <div className="flex gap-2 ml-[-4vw] md:gap-3 md:ml-0 items-center justify-center">
         
             <h5 className="text-small ml-2 tracking-tight text-default-400">{username}</h5>
+            {username === "HEISEN BERG" && <Image src={twitter} alt="" h={24} w={24} />}
+            {username === "Arunav Gupta" && <Image src={twitter} alt="" h={24} w={24} />}
           </div>
         </div>
         <Button
-          className={isFollowed ? "bg-transparent text-white border-default-200 mr-6 " : "mr-6 text-white "}
+          className={isFollowed ? "bg-transparent text-white border-default-200 mr-6 " : "mr-6 text-white  "}
           color="primary"
           radius="full"
           size="sm"
@@ -209,3 +212,5 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
     </Card></>
   );
 }
+
+
