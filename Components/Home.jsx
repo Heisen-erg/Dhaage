@@ -69,7 +69,7 @@ return
     
   return (<>
   { session ?  
-           <div className='bg-black h-min-[70vh] h-fit w-full flex justify-center items-center mt-[10vh] mb-[10vh] '>  <Button onPress={onOpen}>Create Thread</Button>
+           <div className='bg-black min-h-[70vh] h-fit w-full flex justify-center items-center mt-[10vh] mb-[10vh] '>  <Button onPress={onOpen}>Create Thread</Button>
       <Modal shadow='lg' backdrop='blur' placement="center" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
