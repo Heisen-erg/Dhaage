@@ -9,7 +9,7 @@ export async function POST(request){
     console.log("connection true")
     
     const result = await request.json()
-    // if(Users.findOne({Usermail:result.Usermail})){return NextResponse.json({message:"Already exists"})}
+    if(Users.findOne({Usermail:result.Usermail})){return NextResponse.json({message:"Already exists"})}
     
     await Users.create(result)
     return NextResponse.json({"message":"successfully uploaded"})
