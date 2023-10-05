@@ -10,7 +10,13 @@ const thread = new Schema({
     using:String,
     postimage:String,
     usermail:String,
-    commentsnumber:Number
+    commentsnumber:Number,
+    test:{
+type:String,
+default:false
+
+
+    }
 
 
     
@@ -55,3 +61,27 @@ const Message = new Schema({
     
     const comments = mongoose.models.comments || mongoose.model('comments', Message)
     export { comments }
+
+
+
+    const user = new Schema({
+
+
+        Usermail:String,
+         Username:String,
+            Useravatar:String,
+          
+            
+         
+         
+         
+         
+         })
+         
+         
+         const Users = mongoose.models.Users || mongoose.model('Users', user)
+         export { Users }
+     
+
+
+

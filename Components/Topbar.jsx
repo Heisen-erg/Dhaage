@@ -1,7 +1,8 @@
 "use client"
 
 import { Avatar } from '@nextui-org/react'
-import React from 'react'
+import React, { useEffect } from 'react'
+import axios from "axios"
 import {
   Dropdown,
   DropdownTrigger,
@@ -14,6 +15,26 @@ import { signIn,signOut,useSession } from 'next-auth/react';
 
 const Topbar = () => {
   const { data: session } = useSession()
+
+
+useEffect(() => {
+
+  if(session){
+
+axios.post("/Usercollection",{Username:session.user.name,Useravatar:session.user.image,Usermail:session.user.email}).then(()=>console.log("SUCCESS"))
+
+  }
+  
+
+
+
+
+
+
+
+}, [session])
+
+
   
   return (
    
@@ -57,6 +78,7 @@ const Topbar = () => {
             signIn("google")
       
         }}
+        
              >
              
                SignIn
