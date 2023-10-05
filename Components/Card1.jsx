@@ -141,7 +141,7 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
         
             <h5 className="text-small ml-2 tracking-tight text-default-400">{username}</h5>
             {username === "HEISEN BERG" && <Image src={twitter} alt="" h={24} w={24} />}
-            {username === "Arunav Gupta" && <Image src={twitter} alt="" h={24} w={24} />}
+            {/* {username === "Arunav Gupta" && <Image src={twitter} alt="" h={24} w={24} />} */}
           </div>
         </div>
         <Button
