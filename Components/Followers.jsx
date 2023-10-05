@@ -9,7 +9,7 @@ export default function App() {
   return (<>
 
     
-    <div  className=" bg-black h-fit min-h-[100vh] flex items-center pt-5  flex-col ">
+    <div  className=" bg-black mt-[10vh] mb-[10vh] h-fit min-h-[80vh] w-full flex items-center pt-5  flex-col ">
       <Tabs color="primary" size="lg"   aria-label="Options">
         <Tab className="  text-sm text-white" style={{width:'30vw'}} key="photos" title="Your Posts">
       <Userpost/> 

@@ -10,6 +10,7 @@ import Leftbar from "@/Components/Leftbar";
 import Card1 from "@/Components/Card1"
 import dhaage from "@/public/assets/dhaage.png"
 import CustomSpinner from "@/Components/CustomSpinner";
+
 // import InfiniteScroll from "react-infinite-scroll-component";
 import { Button, Spinner } from "@nextui-org/react";
 import { useSession } from "next-auth/react";
@@ -57,9 +58,10 @@ const [page, setPage] = useState(1);
    
     const fetchItems = async () => {
      
-      const response = await axios.get(`/thread/user?page=${page}`)
-      
-      const data1 =  response.data
+      const response = await fetch(`/thread/user?page=${page}`,{method:'GET'})
+     
+      const data1 = await  response.json()
+      // console.log(data1)
       if(!(data1.length)){sethiddenloadmore(true)}
      
       setItems([...items,...data1]);
@@ -76,18 +78,18 @@ const [page, setPage] = useState(1);
 
 <>
 
-<div className=" h-fit bg-black" > 
+{/* <div className=" h-fit bg-black" > 
 <Topbar/>  
 
 
 <div className='flex   ' >
-        <Leftbar/>
+        <Leftbar/> */}
         {spinner? <CustomSpinner/> :
       
         
         
         
-        <div style={{height:'fit-content',minHeight:'80vh'}}  className='flex  items-center flex-col gap-6 z-0 text-gray-400   w-full ' >
+        <div style={{height:'fit-content',minHeight:'70vh'}}  className='flex mt-[10vh] mb-[10vh] items-center flex-col gap-6 z-0 text-gray-400   w-full ' >
 {items.map((response)=>{
 
    return   <Card1 photo={response.image} postimage={response.postimage}  username={response.using} thread={response.thread} number={response.commentsnumber} key={response._id} id={response._id} />
@@ -111,12 +113,12 @@ const [page, setPage] = useState(1);
  
 
 
-   </div>
+   {/* </div>
      
      
     </div>
 
-<Bottombar/>
+<Bottombar/> */}
 
 
 

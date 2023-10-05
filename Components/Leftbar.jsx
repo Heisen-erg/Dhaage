@@ -7,7 +7,7 @@ import mapping from "@/Data/leftbar"
 
 const Leftbar = () => {
   return (
-   <section className='w-1/6 sticky left-0  max-lg:hidden bg-black' style={{height:'80vh',top:'10vh'}} >
+   <section className='w-1/6 sticky mt-[10vh] left-0  max-lg:hidden bg-black' style={{height:'80vh',top:'10vh'}} >
 <div className='flex flex-col justify-evenly  gap-14  pt-16 items-center w-full' >
     
 {mapping.map((response)=>{
