@@ -30,8 +30,8 @@ const[loader,setloader]=useState(false)
 
 setdisabled(true)
  if (image) {
-  if(image.endsWith("mp4")){ secure = `https://res.cloudinary.com/dan3pvqqm/video/upload/q_90/${image.substring(49,image.length)}`}
- else { secure = `https://res.cloudinary.com/dan3pvqqm/image/upload/c_scale,h_200/${image.substring(49,image.length)}`}
+  if(image.endsWith("mp4")){ secure = `https://res.cloudinary.com/dan3pvqqm/video/upload/${image.substring(49,image.length)}`}
+ else { secure = `https://res.cloudinary.com/dan3pvqqm/image/upload/${image.substring(49,image.length)}`}
 console.log(secure)
  axios.post("/thread/user",{thread,image:session.user.image,using:session.user.name,postimage:secure,usermail:session.user.email}).then((data)=>{ 
   setthread("")
