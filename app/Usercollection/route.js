@@ -5,7 +5,7 @@ import { NextResponse ,NextRequest} from "next/server"
 import { Users } from "@/models/thread.model"
 
 export async function POST(request){
-    await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/DHAAGE COLLECTIONS")
+    await mongoose.connect("mongodb+srv://heisenbergdatabase1:uDVtMXlxymOMO8eX@cluster0.vwlkprw.mongodb.net/")
     console.log("connection true")
     
     const result = await request.json()
