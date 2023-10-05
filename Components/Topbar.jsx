@@ -21,7 +21,7 @@ useEffect(() => {
 
   if(session){
 
-axios.post("/Usercollection",{Username:session.user.name,Useravatar:session.user.image,Usermail:session.user.email}).then(()=>console.log("SUCCESS"))
+axios.post("/Usercollection",{Username:session.user.name,Useravatar:session.user.image,Usermail:session.user.email}).then((response)=>console.log(response.data.message))
 
   }
   
