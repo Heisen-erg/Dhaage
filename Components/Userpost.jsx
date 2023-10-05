@@ -28,7 +28,7 @@ useEffect( () => {
   return (<>
   {session? 
   <>{spinner? <Spinner/> :
- <section className='h-fit w-[95vw] flex flex-col items-center'>
+ <section className='h-fit w-full flex flex-col items-center'>
   {/* <div  className='bg-black ' style={{height:'fit-content',width:'95vw'}} > */}
     {useposts.map((response)=>{
         
