@@ -17,13 +17,13 @@ const Topbar = () => {
   const { data: session } = useSession()
 
 
-useEffect(() => {
+// useEffect(() => {
 
-  if(session){
+//   if(session){
 
-axios.post("/Usercollection",{Username:session.user.name,Useravatar:session.user.image,Usermail:session.user.email}).then((response)=>console.log(response.data.message))
+// axios.post("/Usercollection",{Username:session.user.name,Useravatar:session.user.image,Usermail:session.user.email}).then((response)=>console.log(response.data.message))
 
-  }
+//   }
   
 
 
@@ -32,7 +32,7 @@ axios.post("/Usercollection",{Username:session.user.name,Useravatar:session.user
 
 
 
-}, [session])
+// }, [])
 
 
   
