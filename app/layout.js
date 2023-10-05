@@ -4,7 +4,7 @@ import Leftbar from '@/Components/Leftbar';
 import Bottombar from '@/Components/Bottombar';
 
 import './globals.css'
-import lay from "./layoutprovider"
+// import lay from "./layoutprovider"
 import Auth from './provider';
 import {Providers} from "./providers";
 import { Inter } from 'next/font/google'
