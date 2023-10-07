@@ -156,7 +156,7 @@ axios.post('/comments',{getthreadid:e.target.name}).then((response)=>{setcomment
         </Button>
       </CardHeader>
       <CardBody className="px-1 py-5 h-auto w-fit overflow-y-hidden text-small text-default-400">
-      { postimage && <> {postimage.endsWith("mp4") && <video ref={videoRef} className="mt-4 lg:h-[400px] md:h-[300px] md:w-[500px] aspect-video rounded-lg shadow-lg lg:w-[500px] " /**id={`video${id}`} onPlayCapture={ () => playVideo(id)}**/ controls height={300} width={300}  muted src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
+      { postimage && <> {postimage.endsWith("mp4") && <video ref={videoRef} className="mt-4 lg:h-[400px] md:h-[300px] md:w-[500px] aspect-video rounded-lg shadow-lg lg:w-[500px] " /**id={`video${id}`} onPlayCapture={ () => playVideo(id)}**/ controls height={300} width={300} loop  muted src={postimage} preload="metadata"  style={{borderTop:'solid white 0.5px'}} />}
        {postimage.endsWith("jpg") && <Image className="mt-4 aspect-auto" controls  height={200} width={200} src={postimage} />}
        {postimage.endsWith("jpeg") && <Image className="mt-4 aspect-auto" controls height={200} width={200} src={postimage} />} 
         {postimage.endsWith("png") && <Image className="mt-4 aspect-auto" controls height={200} width={200} src={postimage} />} </>
